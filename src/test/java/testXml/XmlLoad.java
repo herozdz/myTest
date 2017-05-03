@@ -1,12 +1,7 @@
 package testXml;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import test.zoe.xmlRes.AreaErpDistributionConf.OtcStoresConfParse;
 import test.zoe.xmlRes.AreaErpDistributionConf.XmlOtcStoresConfParse;
-import test.zoe.xmlRes.entity.FlowDefain;
-import test.zoe.xmlRes.entity.FlowNode;
-import test.zoe.xmlRes.process.ResourceParse;
-import test.zoe.xmlRes.process.XMLResourceParse;
 
 /**
  * Created with IntelliJ IDEA.

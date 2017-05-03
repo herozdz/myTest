@@ -7,15 +7,6 @@
        http://www.springframework.org/schema/util/spring-util-3.0.xsd"
        default-autowire="byName" default-lazy-init="false">
 
-
-    <bean id="resourceParse" class="test.zoe.xmlRes.process.XMLResourceParse">
-        <constructor-arg name="path" value="classpath:/mss_flow.xml" />
-    </bean>
-
-    <bean id="xmlResourceParse" class="test.zoe.xmlRes.AreaErpConf.XMLResourceParse">
-        <constructor-arg name="path" value="classpath:/area_erp.xml" />
-    </bean>
-
     <bean id="xmlOtcStoresConfParse" class="test.zoe.xmlRes.AreaErpDistributionConf.XmlOtcStoresConfParse">
         <constructor-arg name="path" value="classpath:/area_erp_distr.xml" />
     </bean>
