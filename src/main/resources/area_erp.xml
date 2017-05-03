@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<areas>
+    <area areaId="1" areaName="测试库房1" auditor1="bjwht" auditor2="bjwht" yn="1"/>
+    <area areaId="2" areaName="测试库房2" auditor1="bjwht" auditor2="bjwht" yn="1"/>
+    <area areaId="3" areaName="测试库房3" auditor1="bjwht" auditor2="bjwht" yn="1"/>
+    <area areaId="4" areaName="测试库房4" auditor1="bjwht" auditor2="bjwht" yn="1"/>
+    <area areaId="5" areaName="测试库房5" auditor1="bjwht" auditor2="zoudezhu" yn="0"/>
+</areas>
+

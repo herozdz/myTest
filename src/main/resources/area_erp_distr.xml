@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<areas>
+    <area areaId="1" areaName="第一地区" yn="1"><!--按照area元素可扩展多地区-->
+        <auditor1><!--按照auditor元素可扩展多个审核人员-->
+            <auditor erpCode="bjwht" yn="1"/>
+            <auditor erpCode="zoudezhu" yn="1"/>
+        </auditor1>
+        <auditor2><!--按照auditor元素可扩展多个审核人员-->
+            <auditor erpCode="bjwht11" yn="1"/>
+            <auditor erpCode="xxxxx1" yn="1"/>
+            <auditor erpCode="zoudezhu" yn="1"/>
+        </auditor2>
+        <distributions><!--按照distribution元素可扩展多个配送中心信息-->
+            <distribution id="6"   name="北京配送中心" storeId="1"  storeName="测试库房1" yn="1"/>
+            <distribution id="10"  name="广州配送中心" storeId="2"  storeName="测试库房2" yn="1"/>
+            <distribution id="609" name="厦门配送中心" storeId="3"  storeName="测试库房3" yn="1"/>
+        </distributions>
+    </area>
+
+    <area areaId="2" areaName="第二地区" yn="1">
+        <auditor1>
+            <auditor erpCode="bjwht" yn="1"/>
+            <auditor erpCode="zoudezhu" yn="1"/>
+        </auditor1>
+        <auditor2>
+            <auditor erpCode="bjwht" yn="1"/>
+            <auditor erpCode="zoudezhu" yn="1"/>
+        </auditor2>
+        <distributions>
+            <distribution id="729" name="青岛药品配送中心" storeId="4"  storeName="测试库房4" yn="1"/>
+            <distribution id="761" name="重庆保税配送中心" storeId="5"  storeName="测试库房5" yn="1"/>
+        </distributions>
+    </area>
+
+    <area areaId="3" areaName="第三地区" yn="1">
+        <auditor1>
+            <auditor erpCode="bjwht" yn="1"/>
+            <auditor erpCode="test" yn="1"/>
+        </auditor1>
+        <auditor2>
+            <auditor erpCode="bjwht" yn="1"/>
+            <auditor erpCode="test2" yn="1"/>
+        </auditor2>
+        <distributions>
+            <distribution id="720" name="宁波保税配送中心" storeId="6"  storeName="测试库房6" yn="1"/>
+        </distributions>
+    </area>
+</areas>
+
