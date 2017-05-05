@@ -16,8 +16,8 @@ public class XmlLoad {
         ClassPathXmlApplicationContext pathXml=  new ClassPathXmlApplicationContext("classpath:spring/spring-config-bean.xml");
         XmlOtcStoresConfParse xmlOtcStoresConfParse = (XmlOtcStoresConfParse)pathXml.getBean("xmlOtcStoresConfParse");
 
-        //System.out.println("xmlOtcStoresConfParse.getAreasAll->"+ xmlOtcStoresConfParse.getAreasAll());
-         System.out.println(xmlOtcStoresConfParse.getAreaById("1"));
+        System.out.println("xmlOtcStoresConfParse.getAreasAll->"+ xmlOtcStoresConfParse.getAreasAll());
+         //System.out.println(xmlOtcStoresConfParse.getAreaById("1"));
         //System.out.println(xmlOtcStoresConfParse.getDistributionsByAuditorLevelOne("bjwht"));
         //System.out.println(xmlOtcStoresConfParse.getDistributionsByAuditorLevelTwo("bjwht"));
         //System.out.println(xmlOtcStoresConfParse.getAreasByAuditorLevelOne("bjwht"));

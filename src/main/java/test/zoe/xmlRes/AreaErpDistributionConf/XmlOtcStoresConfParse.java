@@ -1,8 +1,8 @@
 package test.zoe.xmlRes.AreaErpDistributionConf;
-
 import com.thoughtworks.xstream.XStream;
 import org.apache.cxf.helpers.IOUtils;
 import org.springframework.core.io.Resource;
+import test.zoe.xmlRes.AreaErpDistributionConf.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,9 +51,11 @@ public class XmlOtcStoresConfParse implements OtcStoresConfParse {
 
     public Area getAreaById(String areaId) {
         List<Area> areas = otcStoresConf.getAreas();
-        for(Area area:areas){
-            if(1==area.getYn() && areaId.equals(area.getAreaId())){
-                return area;
+        if(areas!=null && areas.size()>0){
+            for(Area area:areas){
+                if(1==area.getYn() && areaId.equals(area.getAreaId())){
+                    return area;
+                }
             }
         }
         return null;
@@ -62,90 +64,105 @@ public class XmlOtcStoresConfParse implements OtcStoresConfParse {
     public List<Area> getAreasAll() {
         List<Area> areas = otcStoresConf.getAreas();
         List<Area> areasRes = new ArrayList<Area>();
-        for(Area area:areas){
-            if(1==area.getYn()){
-                areasRes.add(area);
+        if(areas!=null && areas.size()>0){
+            for(Area area:areas){
+                if(1==area.getYn()){
+                    areasRes.add(area);
+                }
             }
+            return areasRes;
         }
-        return areasRes;
+        return null;
     }
 
     public List<Area> getAreasByAuditorLevelOne(String erpCode) {
         List<Area> areas = otcStoresConf.getAreas();
         List<Area> areasRes = new ArrayList<Area>();
-        for(Area area:areas){
-            if(1==area.getYn()){
-                List<Auditor> auditors = area.getAuditor1();
-                for(Auditor auditor:auditors){
-                    if(1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())){
-                        areasRes.add(area);
-                        break;
+        if(areas!=null && areas.size()>0) {
+            for (Area area : areas) {
+                if (1 == area.getYn()) {
+                    List<Auditor> auditors = area.getAuditor1();
+                    for (Auditor auditor : auditors) {
+                        if (1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())) {
+                            areasRes.add(area);
+                            break;
+                        }
                     }
                 }
             }
+            return areasRes;
         }
-        return areasRes;
+        return null;
     }
 
     public List<Area> getAreasByAuditorLevelTwo(String erpCode) {
         List<Area> areas = otcStoresConf.getAreas();
         List<Area> areasRes = new ArrayList<Area>();
-        for(Area area:areas){
-            if(1==area.getYn()){
-                List<Auditor> auditors = area.getAuditor2();
-                for(Auditor auditor:auditors){
-                    if(1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())){
-                        areasRes.add(area);
-                        break;
+        if(areas!=null && areas.size()>0) {
+            for (Area area : areas) {
+                if (1 == area.getYn()) {
+                    List<Auditor> auditors = area.getAuditor2();
+                    for (Auditor auditor : auditors) {
+                        if (1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())) {
+                            areasRes.add(area);
+                            break;
+                        }
                     }
                 }
             }
+            return areasRes;
         }
-        return areasRes;
+        return null;
     }
 
     public List<Distribution> getDistributionsByAuditorLevelOne(String erpCode) {
         List<Area> areas = otcStoresConf.getAreas();
         List<Distribution> distributions = new ArrayList<Distribution>();
-        for(Area area:areas){
-            if(1==area.getYn()){
-                List<Auditor> auditors = area.getAuditor1();
-                for(Auditor auditor:auditors){
-                    if(1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())){
-                        List<Distribution> distributions1 = area.getDistributions();
-                        for(Distribution distribution:distributions1){
-                            if(1 == distribution.getYn()){
-                                distributions.add(distribution);
+        if(areas!=null && areas.size()>0) {
+            for (Area area : areas) {
+                if (1 == area.getYn()) {
+                    List<Auditor> auditors = area.getAuditor1();
+                    for (Auditor auditor : auditors) {
+                        if (1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())) {
+                            List<Distribution> distributions1 = area.getDistributions();
+                            for (Distribution distribution : distributions1) {
+                                if (1 == distribution.getYn()) {
+                                    distributions.add(distribution);
+                                }
                             }
+                            break;
                         }
-                        break;
                     }
                 }
             }
+            return distributions;
         }
-        return distributions;
+        return null;
     }
 
     public List<Distribution> getDistributionsByAuditorLevelTwo(String erpCode) {
         List<Area> areas = otcStoresConf.getAreas();
         List<Distribution> distributions = new ArrayList<Distribution>();
-        for(Area area:areas){
-            if(1==area.getYn()){
-                List<Auditor> auditors = area.getAuditor2();
-                for(Auditor auditor:auditors){
-                    if(1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())){
-                        List<Distribution> distributions1 = area.getDistributions();
-                        for(Distribution distribution:distributions1){
-                            if(1 == distribution.getYn()){
-                                distributions.add(distribution);
+        if(areas!=null && areas.size()>0) {
+            for (Area area : areas) {
+                if (1 == area.getYn()) {
+                    List<Auditor> auditors = area.getAuditor2();
+                    for (Auditor auditor : auditors) {
+                        if (1 == auditor.getYn() && erpCode.equals(auditor.getErpCode())) {
+                            List<Distribution> distributions1 = area.getDistributions();
+                            for (Distribution distribution : distributions1) {
+                                if (1 == distribution.getYn()) {
+                                    distributions.add(distribution);
+                                }
                             }
+                            break;
                         }
-                        break;
                     }
                 }
             }
+            return distributions;
         }
-        return distributions;
+        return null;
     }
 
     public OtcStoresConf getOtcStoresConf() {
