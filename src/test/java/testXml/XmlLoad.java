@@ -1,6 +1,7 @@
 package testXml;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import test.zoe.commonValueInject.VcConstantUtils;
 import test.zoe.xmlRes.AreaErpDistributionConf.XmlOtcStoresConfParse;
 
 /**
@@ -16,7 +17,7 @@ public class XmlLoad {
         ClassPathXmlApplicationContext pathXml=  new ClassPathXmlApplicationContext("classpath:spring/spring-config-bean.xml");
         XmlOtcStoresConfParse xmlOtcStoresConfParse = (XmlOtcStoresConfParse)pathXml.getBean("xmlOtcStoresConfParse");
 
-        System.out.println("xmlOtcStoresConfParse.getAreasAll->"+ xmlOtcStoresConfParse.getAreasAll());
+        //System.out.println("xmlOtcStoresConfParse.getAreasAll->"+ xmlOtcStoresConfParse.getAreasAll());
          //System.out.println(xmlOtcStoresConfParse.getAreaById("1"));
         //System.out.println(xmlOtcStoresConfParse.getDistributionsByAuditorLevelOne("bjwht"));
         //System.out.println(xmlOtcStoresConfParse.getDistributionsByAuditorLevelTwo("bjwht"));
@@ -40,5 +41,10 @@ public class XmlLoad {
         System.out.println("xmlResourceParse.getAreaErpConfByAreaId:"+xmlResourceParse.getAreaErpConfByAreaId("1"));
         System.out.println("xmlResourceParse.getAreaErpConfByAuditorLevelOne:"+xmlResourceParse.getAreaErpConfByAuditorLevelOne("zoudezhu"));
         System.out.println("xmlResourceParse.getAreaErpConfByAuditorLevelTwo:"+xmlResourceParse.getAreaErpConfByAuditorLevelTwo("zoudezhu"));*/
+
+
+        VcConstantUtils vcConstantUtils = (VcConstantUtils)pathXml.getBean("vcConstantUtils");
+        System.out.println(vcConstantUtils.getConstantMap());
+
     }
 }

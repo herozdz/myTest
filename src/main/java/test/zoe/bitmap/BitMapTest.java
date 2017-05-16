@@ -6,6 +6,7 @@ package test.zoe.bitmap;
  * Date: 2017/5/1
  * Time: 12:37
  * To change this template use File | Settings | File Templates.
+ * 位图法
  */
 public class BitMapTest {
 
