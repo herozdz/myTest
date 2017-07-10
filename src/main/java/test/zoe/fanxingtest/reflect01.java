@@ -1,6 +1,7 @@
 package test.zoe.fanxingtest;
 
-import rpctest.EchoService;
+
+import test.zoe.rpctest.EchoService;
 
 import java.lang.reflect.*;
 
@@ -20,13 +21,10 @@ public class reflect01 {
             return "This is the:" + str;
         }
 
-    public <T> T buildError(Class<T> c) throws InstantiationException, IllegalAccessException, NoSuchMethodException {
+    public <T> T buildError(Class<T> c) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         T t = c.newInstance();
-        Field[] fields = c.getFields();
-        c.getMethod("",new Class[]{int.class});
-        for(Field field:fields){
-            field.getName();
-        }
+        Method m1 = c.getMethod("setCount", new Class[]{long.class});
+        m1.invoke(t, 1);
         return t;
     }
         public static void main(String[] args) throws Exception {

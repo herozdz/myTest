@@ -1,6 +1,7 @@
 package test.zoe.fanxingtest;
 
-import rpctest.EchoService;
+
+import test.zoe.rpctest.EchoService;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
