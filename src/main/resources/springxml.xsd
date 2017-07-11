@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns="http://www.luxy.org/zoe"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://www.luxy.org/zoe"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans" />
+
+    <xsd:element name="facade" type="facadeType"></xsd:element>
+    <xsd:complexType name="facadeType">
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:attribute name="interCode" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="reqEvent" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="resEvent" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+</xsd:schema>
