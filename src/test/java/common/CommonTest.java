@@ -3,6 +3,7 @@
 package common;
 
 import org.junit.Test;
+import test.zoe.common.SubClass1;
 
 /**
  * jupiter
@@ -25,6 +26,17 @@ public class CommonTest {
         System.out.println(b);
 
     }
+
+
+    @Test
+    public void testAb(){
+        SubClass1 subClass1 = new SubClass1();
+        System.out.println(subClass1.getNum());
+        System.out.println(subClass1.getStr());
+        System.out.println(subClass1.sayHi("zoudezhu"));
+        System.out.println(subClass1.sayHello("1"));
+    }
+
 
     public void va(Boolean a,Boolean b){
         a = null;
