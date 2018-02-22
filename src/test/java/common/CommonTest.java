@@ -36,6 +36,17 @@ public class CommonTest {
         System.out.println(subClass1.sayHi("zoudezhu"));
         System.out.println(subClass1.sayHello("1"));
     }
+@Test
+    public void testSub(){
+        String tmp = "https://coupon.jd.com/ilink/couponActiveFront/front_index.action?key=9ab4fb56bfd84d3b83c9db1e5dce80e1&roleId=7658516&to=sale.jd.com/act/7wgwhid2f8.html";
+
+        String[] res = tmp.split("[?]");
+
+
+        System.out.println("str1:"+res[0]);
+        System.out.println("str2:"+res[1]);
+    System.out.println("str3:"+"http://coupon.m.jd.com/coupons/show.action?"+res[1]);
+    }
 
 
     public void va(Boolean a,Boolean b){
@@ -64,6 +75,10 @@ public class CommonTest {
         }
         return sum;
     }
+
+
+
+
 
 
 }
