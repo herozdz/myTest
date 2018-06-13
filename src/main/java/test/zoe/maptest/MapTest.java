@@ -1,5 +1,6 @@
 package test.zoe.maptest;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +13,10 @@ import java.util.Set;
  */
 public class MapTest {
     public static void main(String[] args) {
-
+        Date nowdate = new Date();
+        System.out.println("nowdate:"+nowdate);
+        Date nowdate1 = new Date(nowdate.getTime() + 24 * 60 * 60 *1000L);
+        System.out.println("nowdate1:"+nowdate1);
         /*Map<Element , String > m = new HashMap<Element ,String>(10);
         Element e1 = new Element();
         e1.setIndex(123);
@@ -79,6 +83,7 @@ public class MapTest {
         groupMap.putValue("234","123456abc");
         groupMap.putValue("345","123456abc");
         groupMap.putValue("456","123456abc");
+        groupMap.putValue("123","123456abc");
 
 
         groupMap.putValue("123","123456efg");
