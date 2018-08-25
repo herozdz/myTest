@@ -17,7 +17,7 @@ public class BitMapTest {
             if(b[data[i]] != 1){
                 b[data[i]] = 1;
             }else{
-                System.out.println("重复数字："+data[i]);
+                System.out.println("重复 数字："+data[i]);
             }
         }
 
