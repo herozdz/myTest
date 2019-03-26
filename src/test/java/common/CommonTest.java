@@ -76,6 +76,26 @@ public class CommonTest {
         return sum;
     }
 
+    public static void main(String[] args)
+    {
+        for(int i=0;i<9;i++)
+        {
+            if(i!=5)
+                continue;
+            System.out.println("ii="+i);
+        }
+        //-----------------
+        out:for(int i=0;i<5;i++)
+        {
+            System.out.println("i="+i);
+            inner:for(int j=0;j<5;j++)
+            {
+                if(j>=i)
+                    continue out;
+                System.out.println("j="+j);
+            }
+        }
+    }
 
 
 
