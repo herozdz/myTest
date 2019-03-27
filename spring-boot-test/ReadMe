@@ -1,0 +1,5 @@
+1.spring boot 启动插件例子。
+2.目标项目添加pom中对应的坐标，启动项目的时候，springboot自动加载该插件，
+并初始化好该类，并加入到applicationContext中去。该应用就可以通过getBean的
+方式获取该bean，例如：
+CoreBuss coreBuss = applicationContext.getBean("coreBean",CoreBuss.class);

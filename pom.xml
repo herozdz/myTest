@@ -19,8 +19,11 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>spring-boot-test</module>
+    </modules>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.12</junit.version>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>myTest</artifactId>
+        <groupId>com.zoe</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zoe</groupId>
+    <artifactId>springboot-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <mybatis.version>3.4.6</mybatis.version>
+        <mybatis-spring.version>1.3.2</mybatis-spring.version>
+        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
+        <aspectj.version>1.9.2</aspectj.version>
+        <HikariCP.version>3.2.0</HikariCP.version>
+        <mysql_version>5.1.32</mysql_version>
+        <vertx.version>3.6.2</vertx.version>
+        <micrometer.version>1.1.1</micrometer.version>
+        <ignite.version>2.7.0</ignite.version>
+        <hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
+        <mysql-connector-java.version>5.1.41</mysql-connector-java.version>
+        <laf-vertx.version>1.0.17</laf-vertx.version>
+        <fastjson.version>1.2.54</fastjson.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <optional>true</optional>
+        </dependency>-->
+    </dependencies>
+</project>
