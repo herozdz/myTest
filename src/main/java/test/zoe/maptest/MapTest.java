@@ -23,10 +23,10 @@ public class MapTest {
 
         /*******************/
         System.out.println("*******************");
-        int size = 4000000;
+        int size = 35;
         GMap<String ,String > groupMap = new GroupMap<String, String>(7);
         Date inputBeginTime = new Date();
-        for(int i =0;i<size;i++ ){
+       /* for(int i =0;i<size;i++ ){
             groupMap.putValue("123","123456789-"+i);
             groupMap.putValue("234","123456789-"+i);
             groupMap.putValue("345","123456789-"+i);
@@ -37,10 +37,10 @@ public class MapTest {
         }
         Date inputEndTime = new Date();
 
+*/
+        //System.out.println("intput time = " + dateDiff(inputBeginTime,inputEndTime,null));
 
-        System.out.println("intput time = " + dateDiff(inputBeginTime,inputEndTime,null));
-
-        /*groupMap.putValue("123","123456abc");
+        groupMap.putValue("123","123456abc");
         groupMap.putValue("234","123456abc");
         groupMap.putValue("345","123456abc");
         groupMap.putValue("456","123456abc");
@@ -58,7 +58,7 @@ public class MapTest {
         groupMap.putValue("456","456a");
         groupMap.putValue("456","456b");
         groupMap.putValue("456","456c");
-        groupMap.putValue("456","456d");*/
+        groupMap.putValue("456","456d");
 
 
         /*for(GMap.Entry<String , String > entry : groupMap.entrySet()){
@@ -74,7 +74,7 @@ public class MapTest {
         for (Object o : groupMap.keySet()) {
             ks.add((String)o);
             //groupMap.getValue(o).size();
-            //System.out.println("key=" + o + " value=" +groupMap.getValue(o).size());
+            System.out.println("key=" + o + " value=" +groupMap.getValue(o).size());
             //
         }
 
@@ -82,7 +82,7 @@ public class MapTest {
         System.out.println("------>size="+ks.size());
         for (String k : ks) {
             groupMap.getValue(k);
-            //System.out.println("key=" + k + ", value=" + groupMap.getValue(k));
+            System.out.println("key=" + k + ", value=" + groupMap.getValue(k));
         }
         Date outputEndTime = new Date();
         System.out.println("ontput time = " + dateDiff(outputBeginTime,outputEndTime,null));

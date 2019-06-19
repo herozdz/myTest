@@ -124,6 +124,7 @@ public class GroupMap<K,V> implements GMap<K,V>, Cloneable, Serializable {
         int i = indexFor(hash, table.length);
         for (Entry<K,V> e = table[i]; e != null; e = e.next) {
             Object k;
+            /**如果hash相同，并且key相同 则覆盖*/
             if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
                 V oldValue = e.value;
                 e.value = value;
@@ -133,6 +134,7 @@ public class GroupMap<K,V> implements GMap<K,V>, Cloneable, Serializable {
         }
 
         modCount++;
+        /**如果(hash相同，但是key不相同) || （hash不相同）还走add*/
         addEntry(hash, key, value, i);
         return null;
     }
@@ -190,6 +192,8 @@ public class GroupMap<K,V> implements GMap<K,V>, Cloneable, Serializable {
         for (Entry<K,V> e = table[indexFor(hash, table.length)];
              e != null;
              e = e.next) {
+            System.out.println("e.next.key:--->:"+e.next.getKey());
+            System.out.println("e.next.value:--->:"+e.next.getValue());
             Object k;
             if (e.hash == hash && ((k = e.key) == key || key.equals(k)))
                 return e.value;
