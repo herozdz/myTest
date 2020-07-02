@@ -18,13 +18,16 @@ public class ExecutorsDemo implements Runnable {
 
     public static void main(String[] args) {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                3,
-                3,
+                2,
+                2,
                 10, TimeUnit.SECONDS,
                 new LinkedBlockingQueue<Runnable>(1));
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             executor.execute(new ExecutorsDemo(i));
+            /**1、如果没有设置allowCoreThreadTimeOut参数，无论keepAliveTime设置多大,核心线程数量corePoolSize个数的线程
+             * 都不会被kill掉，
+             * 2、如果设置了allowCoreThreadTimeOut参数true ，核心线程会在keepAliveTime秒数 被kill掉*/
             //executor.allowCoreThreadTimeOut(true);
         }
         while (true) {
