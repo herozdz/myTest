@@ -13,5 +13,11 @@ public class TestEL {
         var.put("value", "2020-08-13 17:24:52");
         Object parse = SpringElUtils.parse("value.substring(0,10)", var);
         System.out.println(parse);
+
+        int a = 200;
+        Long b = 1L;
+        int c = 200;
+        ;
+        System.out.println("2020+07".substring(0, 7));
     }
 }
