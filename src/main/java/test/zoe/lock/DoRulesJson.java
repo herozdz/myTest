@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.cxf.common.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -354,6 +355,186 @@ public class DoRulesJson {
     public static void main(String[] args) {
         List<Map> rules = JSON.parseArray(topNTest, Map.class);
         System.out.println(rules);
+        JSONObject o = mergeRules(rules);
+        String sqlObj = doWhereSql(o);
+        System.out.println("sqlObj:"+sqlObj);
+    }
+
+    /**
+     * * or ((dept1 == 1 () and (dept2 == 2) and (dept3 == 3))
+     * * or ((dept1 == 1 () and (dept2 == 2) and (dept3 == 3))
+     * * or ((dept1 == 1 () and (dept2 == 2) and (dept3 == 3))
+     *
+     * 处理成 in
+     * type
+     * 2、品牌
+     * 3、商家
+     * 4、erp
+     * 6、平铺多选
+     * 9、下拉固定选项
+     * */
+    public static String doWhereSql(JSONObject o){
+        JSONObject ruleData = (JSONObject)o.get("ruleData");
+        System.out.println("ruleData:"+ruleData);
+        StringBuffer finalStr = new StringBuffer();
+
+        //"1002":{"type":2,"labelName":"品类","data":[{"code":"2002","name":"品牌2"}]}, // and a = 11 or b =11
+        //遍历每个标签 每个字段的where
+        for(Map.Entry<String, Object> m : ruleData.entrySet()){
+            StringBuffer labelStr = new StringBuffer();
+            labelStr.append("( ");
+            //标签code
+            String field = (String)m.getKey();
+            JSONObject dataValue = (JSONObject)m.getValue();
+            Integer type = (Integer)dataValue.get("type");
+            //遍历 data 属性 ，where 最细粒度的元素
+            JSONArray dataArray = (JSONArray)dataValue.get("data");
+            //处理 1 ,91 (a = 1001 and b = 2001 and c = 3001 ) or (a = 1001 and b = 2001 and c = 3001 ) 格式的sql
+            for(int i=0;i<dataArray.size();i++) {
+                JSONObject data = dataArray.getJSONObject(i);
+                switch(type){
+                    case 1:
+                        String itemFirstCateCd = (String)data.get("itemFirstCateCd");
+                        String itemSecondCateCd = (String)data.get("itemSecondCateCd");
+                        String itemThirdCateCd = (String)data.get("itemThirdCateCd");
+                        if(!StringUtils.isEmpty(itemFirstCateCd)){
+                            labelStr.append("item_first_cate_cd");
+                            labelStr.append(" = ");
+                            labelStr.append(itemFirstCateCd);
+                            labelStr.append(" and ");
+                        }
+
+                        if(!StringUtils.isEmpty(itemSecondCateCd)){
+                            labelStr.append("item_second_cate_cd");
+                            labelStr.append(" = ");
+                            labelStr.append(itemSecondCateCd);
+                            labelStr.append(" and ");
+                        }
+
+                        if(!StringUtils.isEmpty(itemThirdCateCd)){
+                            labelStr.append("item_third_cate_cd");
+                            labelStr.append(" = ");
+                            labelStr.append(itemThirdCateCd);
+                            labelStr.append(" and ");
+                        }
+                        break;
+                    case 91:
+                        String deptId1 = (String)data.get("deptId1");
+                        String deptId2 = (String)data.get("deptId2");
+                        String deptId3 = (String)data.get("deptId3");
+                        if(!StringUtils.isEmpty(deptId1)){
+                            labelStr.append("dept_id_1");
+                            labelStr.append(" = ");
+                            labelStr.append(deptId1);
+                            labelStr.append(" and ");
+                        }
+
+                        if(!StringUtils.isEmpty(deptId2)){
+                            labelStr.append("dept_id_2");
+                            labelStr.append(" = ");
+                            labelStr.append(deptId2);
+                            labelStr.append(" and ");
+                        }
+
+                        if(!StringUtils.isEmpty(deptId3)){
+                            labelStr.append("dept_id_3");
+                            labelStr.append(" = ");
+                            labelStr.append(deptId3);
+                            labelStr.append(" and ");
+                        }
+                        break;
+                }
+
+                if(type == 1 || type == 91){
+                    //item_third_cate_cd = 3001 and ) or ( item_first_cate_cd
+                    labelStr.delete(labelStr.length()-4, labelStr.length());
+                    if(i != dataArray.size() - 1){
+                        labelStr.append(") or ( ");
+                    }
+
+                }
+            }
+            labelStr.append(" ) and ");
+
+
+            //处理where in 条件
+            StringBuffer inAllSql = new StringBuffer();
+            //type 2,3,4,6,9 处理成in
+            if(type == 2 || type == 3 || type == 4 || type == 6 || type == 9){
+                StringBuffer inStr = new StringBuffer();
+
+                for(int i=0;i<dataArray.size();i++) {
+                    JSONObject data = dataArray.getJSONObject(i);
+                    inStr.append(data.get("code")).append(",");
+                }
+                inStr.delete(inStr.length()-1, inStr.length());
+                inAllSql.append(field).append(" in (").append(inStr.toString()).append(") and ");
+            }
+
+            //type 5 大于，小于，between
+            //处理where in 条件
+            StringBuffer betweenAllSql = new StringBuffer();
+            if(type == 5){
+                StringBuffer betweenStr = new StringBuffer();
+                for(int i=0;i<dataArray.size();i++) {
+                    JSONObject data = dataArray.getJSONObject(i);
+                    String flag = (String)data.get("flag");
+                    if("2".equals(flag)){//小于
+                        betweenStr.append(field).append(" < ").append(data.get("beginValue")).append(" and ");
+                    }
+                    if("3".equals(flag)){//大于
+                        betweenStr.append(field).append(" > ").append(data.get("beginValue")).append(" and ");
+                    }
+                    if("4".equals(flag)){////范围数字
+                        betweenStr.append(field).append(" > ").append(data.get("beginValue")).append(" and ")
+                        .append(field).append(" < ").append(data.get("endValue")).append(" and ");
+                    }
+                }
+                //betweenStr.delete(betweenStr.length()-4, betweenStr.length());
+                betweenAllSql.append(betweenStr);
+            }
+
+            StringBuffer equalAllSql = new StringBuffer();
+            if(type == 90 || type == 7){
+                StringBuffer equalStr = new StringBuffer();
+                for(int i=0;i<dataArray.size();i++) {
+                    JSONObject data = dataArray.getJSONObject(i);
+                    String value = (String)data.get(type == 90 ? "value" : "code");
+                    equalStr.append(field).append(" = ").append(value).append(" and ");
+                    equalAllSql.append(equalStr.toString());
+                }
+                //equalStr.delete(betweenStr.length()-4, betweenStr.length());
+
+            }
+
+
+
+            StringBuffer likeAllSql = new StringBuffer();
+            if(type == 8){
+                StringBuffer likeStr = new StringBuffer();
+                for(int i=0;i<dataArray.size();i++) {
+                    JSONObject data = dataArray.getJSONObject(i);
+                    String value = (String)data.get(type == 90 ? "value" : "code");
+                    likeStr.append(field).append(" = ").append(value).append(" and ");
+                    likeAllSql.append(likeStr.toString());
+                }
+                //equalStr.delete(betweenStr.length()-4, betweenStr.length());
+
+            }
+
+
+            //各个标签之间用and 链接
+            finalStr.append(labelStr.toString());
+            finalStr.append(inAllSql.toString());
+            finalStr.append(betweenAllSql.toString());
+            finalStr.append(equalAllSql.toString());
+
+        }////遍历每个标签 每个字段的where for结束
+        //finalStr.delete(finalStr.length()-4, finalStr.length());
+        return finalStr.toString();
+    }
+
+    public static JSONObject mergeRules(List<Map> rules){
         JSONObject jsonObjectRuleDataFinall = new JSONObject();
         JSONObject jsonObjectTopnFinall = new JSONObject();
         JSONObject jsonObjectFinall = new JSONObject();
@@ -406,40 +587,10 @@ public class DoRulesJson {
             }
 
             System.out.println("deepMerge.res:"+jsonObjectFinall);
-        }
 
-        Map<String,Object> m = new HashMap<>();
-        m.put("1",null);
-        System.out.println("mmmmm:"+m);
+        }
+        return jsonObjectFinall;
     }
 
-    /**
-     *
-     * @param source
-     * @param target
-     * @return
-     * @throws JSONException
-     */
-    public static JSONObject deepMerge(JSONObject source, JSONObject target) throws JSONException {
-
-
-        for (String key: source.keySet()) {
-            Object value = source.get(key);
-            if (!target.containsKey(key)) {
-                // new value for "key":
-                target.put(key, value);
-            } else {
-                // existing value for "key" - recursively deep merge:
-                if (value instanceof JSONObject) {
-                    JSONObject valueJson = (JSONObject)value;
-                    deepMerge(valueJson, target.getJSONObject(key));
-                } else {
-                    target.put(key, value);
-                }
-            }
-        }
-        return target;
-
-    }
 
 }
