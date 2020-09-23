@@ -64,44 +64,352 @@ public class DoRulesJson {
             "\n" +
             "]";
 
+    static String topNTest = "[\n" +
+            "    {\n" +
+            "        \"ruleName\": \"规则一\",\n" +
+            "        \"topN\": {\n" +
+            "            \"2005\": {\n" +
+            "                \"type\": 5,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"flag\": \"1\",\n" +
+            "                        \"beginValue\": \"100\",\n" +
+            "                        \"unit\": \"名\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"2006\": {\n" +
+            "                \"type\": 5,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"flag\": \"1\",\n" +
+            "                        \"beginValue\": \"100\",\n" +
+            "                        \"unit\": \"个\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            }\n" +
+            "        },\n" +
+            "        \"ruleData\": {\n" +
+            "            \"1001\": {\n" +
+            "                \"type\": 1,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"itemFirstCateCd\": \"1001\",\n" +
+            "                        \"itemFirstCateName\": \"一级品类名称\",\n" +
+            "                        \"itemSecondCateCd\": \"2001\",\n" +
+            "                        \"itemSecondCateName\": \"二级品类名称\",\n" +
+            "                        \"itemThirdCateCd\": \"3001\",\n" +
+            "                        \"itemThirdCateName\": \"三级品类名称\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1002\": {\n" +
+            "                \"type\": 2,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"2001\",\n" +
+            "                        \"name\": \"品牌1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"2002\",\n" +
+            "                        \"name\": \"品牌2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1003\": {\n" +
+            "                \"type\": 3,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"3001\",\n" +
+            "                        \"name\": \"商家1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"3002\",\n" +
+            "                        \"name\": \"商家2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1004\": {\n" +
+            "                \"type\": 4,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"erp1\",\n" +
+            "                        \"name\": \"erp1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"erp2\",\n" +
+            "                        \"name\": \"erp2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1005\": {\n" +
+            "                \"type\": 5,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"flag\": \"2\",\n" +
+            "                        \"beginValue\": \"200\",\n" +
+            "                        \"unit\": \"个\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"flag\": \"3\",\n" +
+            "                        \"beginValue\": \"250\",\n" +
+            "                        \"unit\": \"个\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"flag\": \"4\",\n" +
+            "                        \"beginValue\": \"250\",\n" +
+            "                        \"endValue\": \"280\",\n" +
+            "                        \"unit\": \"个\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1006\": {\n" +
+            "                \"type\": 6,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"1\",\n" +
+            "                        \"name\": \"选项1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"2\",\n" +
+            "                        \"name\": \"选项2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1007\": {\n" +
+            "                \"type\": 7,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"1\",\n" +
+            "                        \"name\": \"选项1\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1008\": {\n" +
+            "                \"type\": 8,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"text\": \"保存的文本信息1，保存的文本信息2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            }\n" +
+            "        }\n" +
+            "    },\n" +
+            "    {\n" +
+            "        \"ruleName\": \"规则二\",\n" +
+            "        \"topN\": {\n" +
+            "            \"2005\": {\n" +
+            "                \"type\": 5,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"flag\": \"1\",\n" +
+            "                        \"beginValue\": \"99\",\n" +
+            "                        \"unit\": \"名\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"2006\": {\n" +
+            "                \"type\": 5,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"flag\": \"1\",\n" +
+            "                        \"beginValue\": \"50\",\n" +
+            "                        \"unit\": \"个\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            }\n" +
+            "        },\n" +
+            "        \"ruleData\": {\n" +
+            "            \"1001\": {\n" +
+            "                \"type\": 1,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"itemFirstCateCd\": \"规则二1001\",\n" +
+            "                        \"itemFirstCateName\": \"规则二一级品类名称\",\n" +
+            "                        \"itemSecondCateCd\": \"规则二2001\",\n" +
+            "                        \"itemSecondCateName\": \"二级品类名称\",\n" +
+            "                        \"itemThirdCateCd\": \"规则二3001\",\n" +
+            "                        \"itemThirdCateName\": \"规则二三级品类名称\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1002\": {\n" +
+            "                \"type\": 2,\n" +
+            "                \"labelName\": \"规则二品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二2001\",\n" +
+            "                        \"name\": \"规则二品牌1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二2002\",\n" +
+            "                        \"name\": \"规则二品牌2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1003\": {\n" +
+            "                \"type\": 3,\n" +
+            "                \"labelName\": \"规则二品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二3001\",\n" +
+            "                        \"name\": \"商家1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二3002\",\n" +
+            "                        \"name\": \"规则二商家2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1004\": {\n" +
+            "                \"type\": 4,\n" +
+            "                \"labelName\": \"规则二品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二erp1\",\n" +
+            "                        \"name\": \"erp1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二erp2\",\n" +
+            "                        \"name\": \"规则二erp2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1005\": {\n" +
+            "                \"type\": 5,\n" +
+            "                \"labelName\": \"规则二品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"flag\": \"2\",\n" +
+            "                        \"beginValue\": \"200\",\n" +
+            "                        \"unit\": \"规则二个\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"flag\": \"3\",\n" +
+            "                        \"beginValue\": \"250\",\n" +
+            "                        \"unit\": \"规则二个\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"flag\": \"4\",\n" +
+            "                        \"beginValue\": \"250\",\n" +
+            "                        \"endValue\": \"280\",\n" +
+            "                        \"unit\": \"个\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1006\": {\n" +
+            "                \"type\": 6,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二1\",\n" +
+            "                        \"name\": \"选项1\"\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二2\",\n" +
+            "                        \"name\": \"选项2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1007\": {\n" +
+            "                \"type\": 7,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"code\": \"规则二1\",\n" +
+            "                        \"name\": \"选项1\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            },\n" +
+            "            \"1008\": {\n" +
+            "                \"type\": 8,\n" +
+            "                \"labelName\": \"品类\",\n" +
+            "                \"data\": [\n" +
+            "                    {\n" +
+            "                        \"text\": \"规则二保存的文本信息1，保存的文本信息2\"\n" +
+            "                    }\n" +
+            "                ]\n" +
+            "            }\n" +
+            "        }\n" +
+            "    }\n" +
+            "]";
+
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
-        JSONArray array = JSON.parseArray(tree);
-        List<Map> rules = JSON.parseArray(tree, Map.class);
-        /*for(int i=0;i<array.size();i++){
-            JSONObject level1Obj = array.getJSONObject(i);  // 遍历 jsonarray 数组，把每一个对象转成 json 对象
-            String valueLevel1 = (String)level1Obj.get("1008");
-            JSONArray data = (JSONArray)level1Obj.get("ruleData");
-            System.out.println(level1Obj);
-            System.out.println("*************");
-            System.out.println(data);
-        }*/
+        List<Map> rules = JSON.parseArray(topNTest, Map.class);
         System.out.println(rules);
+        JSONObject jsonObjectRuleDataFinall = new JSONObject();
+        JSONObject jsonObjectTopnFinall = new JSONObject();
         JSONObject jsonObjectFinall = new JSONObject();
         for (Map rule : rules) {//多个规则
-            System.out.println(rule.get("ruleData"));
-            JSONObject jsonObject = (JSONObject) rule.get("ruleData");
-            for (Map.Entry<String, Object> m : jsonObject.entrySet()) {
-                String key = m.getKey();
-                JSONObject value = (JSONObject)m.getValue();
-                if(null == jsonObjectFinall.get(key)){
-                    jsonObjectFinall.put(key,value);
-                } else {
-                    JSONObject source = (JSONObject)jsonObjectFinall.get(key);
-                    JSONArray data = (JSONArray)source.get("data");
-                    if(null != data){
-                        data.addAll((JSONArray)value.get("data")) ;
+            JSONObject jsonObjectTopN = (JSONObject) rule.get("topN");
+            if(null != jsonObjectTopN){
+                System.out.println("jsonObjectTopN:"+jsonObjectTopN);
+                for (Map.Entry<String, Object> m : jsonObjectTopN.entrySet()) {
+                    String key = m.getKey();
+                    JSONObject value = (JSONObject)m.getValue();
+                    if(null == jsonObjectTopnFinall.get(key)){
+                        jsonObjectTopnFinall.put(key,value);
+                    } else {
+                        //source 处理
+                        JSONObject source = (JSONObject)jsonObjectTopnFinall.get(key);
+                        JSONArray sourceDataArr = (JSONArray)source.get("data");
+                        JSONObject sourceTopNData = (JSONObject)sourceDataArr.get(0);
+                        Integer sourceBeginValue =  Integer.valueOf((String)sourceTopNData.get("beginValue"));
+                        //target 处理
+                        JSONArray targetDataArr = (JSONArray)value.get("data");
+                        JSONObject targetTopNData = (JSONObject)targetDataArr.get(0);
+                        Integer targetBeginValue =  Integer.valueOf((String)targetTopNData.get("beginValue"));
+                        if(targetBeginValue.intValue() < sourceBeginValue.intValue()){
+                            sourceDataArr.remove(0);
+                            sourceDataArr.add(targetTopNData);
+                        }
                     }
                 }
+                jsonObjectFinall.put("topN",jsonObjectTopnFinall);
             }
+
+
+            JSONObject jsonObject = (JSONObject) rule.get("ruleData");
+            if(null != jsonObject){
+                System.out.println("ruleDatajsonObject:"+jsonObject);
+                for (Map.Entry<String, Object> m : jsonObject.entrySet()) {
+                    String key = m.getKey();
+                    JSONObject value = (JSONObject)m.getValue();
+                    if(null == jsonObjectRuleDataFinall.get(key)){
+                        jsonObjectRuleDataFinall.put(key,value);
+                    } else {
+                        JSONObject source = (JSONObject)jsonObjectRuleDataFinall.get(key);
+                        JSONArray data = (JSONArray)source.get("data");
+                        if(null != data){
+                            data.addAll((JSONArray)value.get("data")) ;
+                        }
+                    }
+                }
+                jsonObjectFinall.put("ruleData",jsonObjectRuleDataFinall);
+            }
+
             System.out.println("deepMerge.res:"+jsonObjectFinall);
         }
 
         Map<String,Object> m = new HashMap<>();
-        m.put("1","");
+        m.put("1",null);
         System.out.println("mmmmm:"+m);
     }
 
