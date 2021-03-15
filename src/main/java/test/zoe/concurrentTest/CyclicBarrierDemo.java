@@ -42,7 +42,7 @@ public class CyclicBarrierDemo {
                         System.out.println("用户："+user + "到达聚餐点，当前已有"+(cb.getNumberWaiting() +1)+"到达");
                         //阻塞
                         cb.await();//第几个人到了之后 需要等待
-                        System.out.println("拍照完之后，开始吃饭。。。");
+                        System.out.println("用户："+user+"拍照完之后，开始吃饭。。。");
                         Thread.sleep((long)(Math.random()*10000));
                         System.out.println("用户："+user +"吃完饭");
 

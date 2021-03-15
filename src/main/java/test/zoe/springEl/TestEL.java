@@ -11,7 +11,8 @@ public class TestEL {
     public static void main(String[] args) {
         Map<String,Object> var= new HashMap<>();
         var.put("value", "2020-08-13 17:24:52");
-        Object parse = SpringElUtils.parse("value.substring(0,10)", var);
+        var.put("value1", "2020-08-12 17:24:52");
+        Object parse = SpringElUtils.parse("value1.substring(0,10)", var);
         System.out.println(parse);
 
         int a = 200;
@@ -19,5 +20,6 @@ public class TestEL {
         int c = 200;
         ;
         System.out.println("2020+07".substring(0, 7));
+
     }
 }
