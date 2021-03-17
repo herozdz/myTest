@@ -38,7 +38,7 @@ public class ProxyTest001 {
     }
 
     public static Object testClass() throws ClassNotFoundException {
-        Class<?> a =  Class.forName("rpctest.EchoServiceImpl");
+        Class<?> a =  Class.forName("test.zoe.rpctest.EchoServiceImpl");
 
         Object o = Proxy.newProxyInstance(a.getClassLoader(),
                 new Class[]{a.getInterfaces()[0]},
@@ -49,7 +49,7 @@ public class ProxyTest001 {
                         System.out.println("method.getParameterTypes():"+method.getParameterTypes()[0]+","+method.getParameterTypes()[1]);
                         System.out.println("method.getAnnotations():"+method.getAnnotations()[0]);
                         System.out.println("args:"+args[0]+","+args[1]);
-                        Object o = method.invoke(Class.forName("rpctest.EchoServiceImpl").newInstance(),args);
+                        Object o = method.invoke(Class.forName("test.zoe.rpctest.EchoServiceImpl").newInstance(),args);
                         return o ;
                     }
                 }
