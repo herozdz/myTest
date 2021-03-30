@@ -2,8 +2,7 @@
 package test.zoe.springEl;
 /**
  * 这个类不能公开，目的就是为了规范使用， 将这个类的使用限制到当前package 下
- *
- * @author : qiujianping
+
  * @date: 18-3-22
  * Time: 下午5:21
  */
