@@ -4,6 +4,7 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 
 public class LoginContext {
 	private static final ThreadLocal<LoginContext> holder = new TransmittableThreadLocal();
+	//private static final ThreadLocal<LoginContext> holder = new ThreadLocal<LoginContext>();
 
 	String pin;
 

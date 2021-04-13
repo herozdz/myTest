@@ -23,26 +23,23 @@ public class MTest {
         loginContext.setPin("pin-zoudezhu");
         LoginContext.setLoginContext(loginContext);
 
-        ThreadLocal<LoginContext> local = LoginContext.getHolder();
+        System.out.println("mainThread:"+Thread.currentThread().getName()+
+                "-->account:"+LoginContext.getLoginContext().getAccount()+
+                ",pin:"+LoginContext.getLoginContext().getPin());
+
+        //ThreadLocal<LoginContext> local = LoginContext.getHolder();
         ExecutorService executorService = null;
         executorService = CommonConfig.getThreadPool(2, 2,CommonConfig.THREAD_QUEUE_CAPACITY1K);
-        executorService = TtlExecutors.getTtlExecutorService(executorService);
-        TestTask t1 = new TestTask(local);
-        TestTask t2 = new TestTask(local);
+        //executorService = TtlExecutors.getTtlExecutorService(executorService);
+        TestTask t1 = new TestTask();
+        TestTask t2 = new TestTask();
 
         Future<String> f1 =  executorService.submit(t1);
 
         Future<String> f2  = executorService.submit(t2);
-        System.out.println("main:"+Thread.currentThread().getName()+
-                "-->account:"+LoginContext.getLoginContext().getAccount()+
-                ",pin:"+LoginContext.getLoginContext().getPin());
+
         try {
-            System.out.println("f1:"+(String)f1.get());
-            System.out.println("f2:"+(String)f2.get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+
         }finally {
             executorService.shutdown();
         }

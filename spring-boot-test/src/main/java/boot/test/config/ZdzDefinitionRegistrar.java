@@ -2,10 +2,7 @@ package boot.test.config;
 
 import boot.test.annotation.EnableZdzConfig;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.beans.factory.support.ManagedList;
-import org.springframework.beans.factory.support.ManagedMap;
-import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.beans.factory.support.*;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -22,7 +19,6 @@ import static boot.test.constants.Constants.STOP;
 
  */
 public class ZdzDefinitionRegistrar implements ImportBeanDefinitionRegistrar, EnvironmentAware {
-
     private ConfigurableEnvironment environment;
 
     private AtomicBoolean registered = new AtomicBoolean(false);
