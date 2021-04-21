@@ -3,6 +3,7 @@ package test.zoe.completableFutureTest;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.function.*;
 
@@ -10,7 +11,118 @@ public class CompletableFutureTest {
     public static void main(String[] args) throws Exception {
         //whenComplete();
         //thenApply();
-        handle();
+        //handle();
+        futureTest1("11");
+    }
+
+    public static class SkuInfo{
+        private String sku;
+        private String name;
+
+        public String getSku() {
+            return sku;
+        }
+
+        public void setSku(String sku) {
+            this.sku = sku;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "SkuInfo{" +
+                    "sku='" + sku + '\'' +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
+    }
+
+    public static void futureTest1(String sku){
+                CompletableFuture<SkuInfo> future = CompletableFuture.supplyAsync(() -> {
+                    SkuInfo skuInfo = new SkuInfo();
+                    skuInfo.setSku(sku);
+                    skuInfo.setName(sku + "sku名称");
+                    return skuInfo;
+                });
+                try{
+                    Thread.sleep(10);
+                } catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+
+                boolean bo = future.complete(new SkuInfo());
+                System.out.println("future.complete.1:"+bo); //true World ,false Hello
+                    try
+
+                {
+                    System.out.println("future.get()=" + future.get());
+                } catch(
+                InterruptedException e)
+
+                {
+                    e.printStackTrace();
+                } catch(
+                ExecutionException e)
+
+                {
+                    e.printStackTrace();
+                }
+
+            }
+    public static void futureTest2(){
+        /**
+         * 没有执行，是因为在CompletableFuture.supplyAsync只休息了两秒，就正常执行完毕了，
+         * 故不再执行complete的代码了。complete用来告知CompletableFuture任务完成。
+         * 下面调换sleep时间，让CompletableFuture.supplyAsync休息的长一些，而Thread里面休息短一下：
+         * */
+        CompletableFuture<String> future = CompletableFuture.supplyAsync(new Supplier<String>() {
+            @Override
+            public String get() {
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return "blog.csdn.net/zhangphil";
+            }
+        });
+
+        System.out.println(System.currentTimeMillis() + ":time 1");
+
+        future.whenCompleteAsync(new BiConsumer<String, Throwable>() {
+            @Override
+            public void accept(String s, Throwable throwable) {
+                System.out.println(System.currentTimeMillis() + ":" + s);
+            }
+        });
+
+        System.out.println(System.currentTimeMillis() + ":time 2");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (Exception e) {
+                    //异常退出。
+                    future.completeExceptionally(e);
+                }
+
+                // CompletableFuture被通知线程任务完成。
+                System.out.println(System.currentTimeMillis() + ":运行至此。");
+                future.complete("任务完成。");
+            }
+        }).start();
+
+        System.out.println(System.currentTimeMillis() + ":time 3");
     }
 
     //无返回值
